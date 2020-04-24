@@ -63,7 +63,7 @@
                                                 </form>
                                             </div>
                                         </div>	
-                                        <a href="" class="btn btn-primary"><i class="fa fa-download"></i> EXPORT</a>
+                                        <a href="{{ secure_url('maindealer/H1/export_excel') }}"  class="btn btn-primary"><i class="fa fa-download"></i> EXPORT</a>
                                     </div>
                                     </div>
                                 </div>

@@ -59,27 +59,27 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
+						<li><a href="{{ url('maindealer/home') }}" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
 						<li>
 							<a href="#database" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>DATABASE</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="database" class="collapse ">
 								<ul class="nav">
-									<li><a href="" class="">Database H1</a></li>
-									<li><a href="" class="">Database H2</a></li>
+									<li><a href="{{ url('maindealer/H1') }}" class="">Database H1</a></li>
+									<li><a href="{{ url('maindealer/H2') }}" class="">Database H2</a></li>
 								</ul>
 							</div>
 						</li>
-						<li><a href="index.html" ><i class="lnr lnr-checkmark-circle"></i> <span>Verifikasi CDB</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-users"></i> <span>Follow UP CDB</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-book"></i> <span>Leads Data</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-phone-handset"></i> <span>Call Thanks</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-alarm"></i> <span>Reminder Service</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-calendar-full"></i> <span>Booking Service</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-cog"></i> <span>FU. After Service</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-file-empty"></i> <span>Kuadran</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-file-empty"></i> <span>Pica</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-user"></i> <span>User</span></a></li>
-						<li><a href="index.html" ><i class="lnr lnr-chart-bars"></i> <span>Report</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-checkmark-circle"></i> <span>Verifikasi CDB</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-users"></i> <span>Follow UP CDB</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-book"></i> <span>Leads Data</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-phone-handset"></i> <span>Call Thanks</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-alarm"></i> <span>Reminder Service</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-calendar-full"></i> <span>Booking Service</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-cog"></i> <span>FU. After Service</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-file-empty"></i> <span>Kuadran</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-file-empty"></i> <span>Pica</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-user"></i> <span>User</span></a></li>
+						<li><a href="#" ><i class="lnr lnr-chart-bars"></i> <span>Report</span></a></li>
 					</ul>
 				</nav>
 			</div>
