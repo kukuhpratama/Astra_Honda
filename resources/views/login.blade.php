@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
 	<title>Login V1</title>
 	<meta charset="UTF-8">
@@ -27,7 +27,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-                <img src="{{asset('login/images/img-01.png')}}" alt="IMG">
+                <img src="{{asset('login/images/img-02.png')}}" alt="IMG">
 				</div>
 
 				<form class="login100-form validate-form">
@@ -67,10 +67,7 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
+					
 					</div>
 				</form>
 			</div>
