@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('login');
 });
 
 Route::get('/dealer','DealerController@uploadH2');
