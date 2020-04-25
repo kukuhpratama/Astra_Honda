@@ -9,6 +9,7 @@ class DatabaseH2 extends Model
     protected $primaryKey = 'id_database_h2';
     protected $table = 'database_h2';
     protected $fillable = [
+        'id_dealer',
         'nomor',
         'nomor_nama_AHASS',
         'kode_dealer',
@@ -57,6 +58,10 @@ class DatabaseH2 extends Model
 
     public function getTableColumns() {
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
+
+    public function dealer(){
+        return $this->belongsTo('App\Dealer', 'id_dealer');
     }
 
 }

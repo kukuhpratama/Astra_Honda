@@ -11,11 +11,14 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'jabatan'
+        'name', 'email', 'password', 'jabatan', 'id_dealer'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    public function dealer(){
+        return $this->belongsTo('App\Dealer', 'id_dealer');
+    }
 }

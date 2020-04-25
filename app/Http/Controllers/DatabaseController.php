@@ -9,10 +9,11 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\DatabaseH1;
 use App\DatabaseH2;
+use App\Dealer;
 use DB;
 
 class DatabaseController extends Controller
-{   
+{
 
     public function index()
     {
@@ -20,7 +21,7 @@ class DatabaseController extends Controller
     }
 
     public function uploadH1()
-    {   
+    {
         $showed_data = $this->listDataShowed();
 
         $data = DatabaseH1::all()->toArray();
@@ -32,27 +33,38 @@ class DatabaseController extends Controller
                 }
             }
         }
-        $new_data['columns'] = $showed_data['alias_col_name']; 
+        $new_data['dealers'] = Dealer::all()->toArray();
+        $new_data['columns'] = $showed_data['alias_col_name'];
         return view('uploadH1', $new_data);
     }
 
-    public function uploadH2()
+    public function uploadH2($id_dealer=null)
     {
-        $data = DatabaseH2::all()->toArray();
         $new_data = array('result'=>[], 'columns'=>[]);
-        foreach($data as $item){
-            $new_data['result'][] = array_values($item);
-        }
         $new_data['columns'] = $this->getColumnsH2();
-        // dd($new_data);exit;
+
+        if(isset($id_dealer)){
+            $data = DatabaseH2::where('id_dealer',$id_dealer)->first()->toArray();
+            foreach($data as $item){
+                $new_data['result'][] = array_values($item);
+            }
+            $new_data['dealers'] = Dealer::where('id_dealer',$id_dealer)->first()->toArray();
+        }else{
+            $data = DatabaseH2::all()->toArray();
+            foreach($data as $item){
+                $new_data['result'][] = array_values($item);
+            }
+            $new_data['dealers'] = Dealer::all()->toArray();
+        }
+
         return view('uploadH2', $new_data);
     }
 
-    public function import_excel_h1(Request $request) 
+    public function import_excel_h1(Request $request)
 	{
         //Remove all data first
         DatabaseH1::truncate();
-        
+
         $this->validate($request, [
             'file' => 'required|mimes:csv,xls,xlsx'
         ]);
@@ -60,22 +72,23 @@ class DatabaseController extends Controller
         $file = $request->file('file');
         $nama_file = rand().$file->getClientOriginalName();
         $file->move('file_cluster',$nama_file);
-        
+
         try {
             $import = Excel::import(new DatabaseH1Import, public_path('/file_cluster/'.$nama_file));
         }catch (\Exception $exc) {
             // dd($exc->getMessage());exit;
             return redirect()->back()->with('error', 'Something Went Wrong');  
+            return redirect()->back()->with('error', 'Something Went Wrong');
         }
-        return redirect()->back()->with('success', 'File Successfully Uploaded'); 
- 
+        return redirect()->back()->with('success', 'File Successfully Uploaded');
+
     }
 
-    public function import_excel_h2(Request $request) 
+    public function import_excel_h2(Request $request)
 	{
         //Remove all data first
         DatabaseH2::truncate();
-        
+
         $this->validate($request, [
             'file' => 'required|mimes:csv,xls,xlsx'
         ]);
@@ -83,15 +96,15 @@ class DatabaseController extends Controller
         $file = $request->file('file');
         $nama_file = rand().$file->getClientOriginalName();
         $file->move('file_cluster',$nama_file);
-       
+
         try {
             $import = Excel::import(new DatabaseH2Import, public_path('/file_cluster/'.$nama_file));
         }catch (\Exception $exc) {
-            return redirect()->back()->with('error', 'Something Went Wrong');  
+            return redirect()->back()->with('error', 'Something Went Wrong');
         }
-        return redirect()->back()->with('success', 'File Successfully Uploaded');  
+        return redirect()->back()->with('success', 'File Successfully Uploaded');
     }
-    
+
     public function export_excel_h1(){
         return Excel::download(new DatabaseH1Export, 'database_h1.xlsx');
     }
@@ -122,46 +135,46 @@ class DatabaseController extends Controller
 
         return [
             'alias_col_name' => [
-                'No. Rangka',	
-                'Kode Mesin',	
-                'No. Mesi',	
-                'Tgl Mohon',	
-                'Nama',	
-                'Alamat',	
-                'Kel',	
-                'Kec',	
-                'Kode Kota',	
-                'Cash/Credit',	
-                'Finance Company',	
-                'Down Payment',	
-                'Tenor',	
-                'Email',	
-                'Jenis Sales',	
-                'Gender',	
-                'Tgl Lahir',	
-                'Agama',	
-                'Pekerjaan',	
-                'Pengeluaran',	
-                'Pendidikan',	
-                'No.HP',	
-                'No. Telp',	
-                'diHubungi?',	
-                'SalesPerson',	
-                'Umur',	
-                'Range Umur',	
-                'TIPE',	
-                '6JENIS',	
-                '3JENIS',	
-                'DP Aktual',	
-                'Tenor',	
-                'Cicilan',	
-                'Tipe ATPM',	
-                'Warna',	
-                'Tipe Var Plus',	
+                'No. Rangka',
+                'Kode Mesin',
+                'No. Mesi',
+                'Tgl Mohon',
+                'Nama',
+                'Alamat',
+                'Kel',
+                'Kec',
+                'Kode Kota',
+                'Cash/Credit',
+                'Finance Company',
+                'Down Payment',
+                'Tenor',
+                'Email',
+                'Jenis Sales',
+                'Gender',
+                'Tgl Lahir',
+                'Agama',
+                'Pekerjaan',
+                'Pengeluaran',
+                'Pendidikan',
+                'No.HP',
+                'No. Telp',
+                'diHubungi?',
+                'SalesPerson',
+                'Umur',
+                'Range Umur',
+                'TIPE',
+                '6JENIS',
+                '3JENIS',
+                'DP Aktual',
+                'Tenor',
+                'Cicilan',
+                'Tipe ATPM',
+                'Warna',
+                'Tipe Var Plus',
                 'No KK',
                 'Kode Pekerjaan 2'
             ],
-            
+
             'table_col_name' => [
                 'no_rangka',
                 'kode_mesin',
