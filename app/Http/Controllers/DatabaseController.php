@@ -64,6 +64,7 @@ class DatabaseController extends Controller
         try {
             $import = Excel::import(new DatabaseH1Import, public_path('/file_cluster/'.$nama_file));
         }catch (\Exception $exc) {
+            // dd($exc->getMessage());exit;
             return redirect()->back()->with('error', 'Something Went Wrong');  
         }
         return redirect()->back()->with('success', 'File Successfully Uploaded'); 
