@@ -19,7 +19,7 @@ class DatabaseH2Import implements ToModel,WithStartRow
     }
 
     public function model(array $row)
-    {
+    {   
         $columns = (new DatabaseH2)->getTableColumns();
         unset($columns[0]); //exclude id_database_h1
         unset($columns[38]); //exclude created_at
@@ -34,7 +34,7 @@ class DatabaseH2Import implements ToModel,WithStartRow
             $i++;
         }
 
-        dd($data);exit;
         return new DatabaseH2($data);
+        
     }  
 }

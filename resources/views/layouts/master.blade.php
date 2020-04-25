@@ -7,18 +7,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
-	<!-- MAIN CSS -->
-<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
-	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	<!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.ico')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
+		<!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
+		<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
+		<!-- GOOGLE FONTS -->
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+		<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.ico')}}">
 </head>
 
 <body>
@@ -42,11 +42,11 @@
 							</ul>
 						</li> --}}
 						<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span>{{ session('name') }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								{{-- <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li> --}}
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a href="{{ url('logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -59,13 +59,15 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="{{ url('maindealer/home') }}" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
+						<li><a href="{{ url('home') }}" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
 						<li>
-							<a href="#database" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>DATABASE</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#database" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Database</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="database" class="collapse ">
 								<ul class="nav">
-									<li><a href="{{ url('maindealer/H1') }}" class="">Database H1</a></li>
-									<li><a href="{{ url('maindealer/H2') }}" class="">Database H2</a></li>
+									@if (session()->has('jabatan') && session('jabatan') == 'main_dealer')
+										<li><a href="{{ url('database/H1') }}" class="">Database H1</a></li>
+									@endif
+									<li><a href="{{ url('database/H2') }}" class="">Database H2</a></li>
 								</ul>
 							</div>
 						</li>

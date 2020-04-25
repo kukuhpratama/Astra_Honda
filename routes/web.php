@@ -18,18 +18,29 @@ use Illuminate\Support\Facades\Route;
 //     return view('login');
 // });
 
-Route::get('/dealer','DealerController@uploadH2');
 
-Route::group(['prefix' => 'maindealer'], function(){
-    Route::get('home', 'MainDealerController@index')->name('main_dealer.home');
-    
-    Route::get('H1','MainDealerController@uploadH1');
-    Route::get('H1/export_excel', 'MainDealerController@export_excel_h1');
-    Route::post('H1/import_excel', 'MainDealerController@import_excel_h1');
+// Auth::routes();
 
-    Route::get('H2','MainDealerController@uploadH2');
-    Route::get('H2/export_excel', 'MainDealerController@export_excel_h2');
-    Route::post('H2/import_excel', 'MainDealerController@import_excel_h2');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', function(){
+    session()->flush();
+    return redirect('login');
+  });
+  
+Route::get('/', function(){
+    return redirect()->route('home');
 });
+Route::get('home', 'HomeController@index')->name('home')->middleware('validate_session');
 
-Route::get('home', 'HomeController@home')->name('home');
+Route::group(['prefix' => 'database', 'middleware' => 'validate_session'], function(){
+
+    Route::get('H1','DatabaseController@uploadH1')->middleware('is_main_dealer');
+    Route::get('H1/export_excel', 'DatabaseController@export_excel_h1')->middleware('is_main_dealer');
+    Route::post('H1/import_excel', 'DatabaseController@import_excel_h1')->middleware('is_main_dealer');
+    
+    Route::get('H2','DatabaseController@uploadH2');
+    Route::get('H2/export_excel', 'DatabaseController@export_excel_h2');
+    Route::post('H2/import_excel', 'DatabaseController@import_excel_h2');
+   
+});
