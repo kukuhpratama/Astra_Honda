@@ -18,4 +18,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function dealer(){
+        return $this->belongsTo('App\Dealer', 'id_dealer');
+    }
 }

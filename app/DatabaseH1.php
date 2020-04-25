@@ -118,4 +118,8 @@ class DatabaseH1 extends Model
     public function getTableColumns() {
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
+
+    public function dealer(){
+        return $this->belongsTo('App\Dealer', 'id_dealer');
+    }
 }

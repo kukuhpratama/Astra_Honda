@@ -15,10 +15,10 @@ class CreateDatabaseH2Table extends Migration
     {
         Schema::create('database_h2', function (Blueprint $table) {
             $table->bigIncrements('id_database_h2');
-            // $table->unsignedBigInteger('id_dealer')->nullable();	
+            $table->unsignedBigInteger('id_dealer')->nullable();	
             $table->string(Str::snake('Nomor'),255)->nullable();
             $table->string('nomor_nama_AHASS',255)->nullable();
-            $table->string(Str::snake('Kode Dealer'),50)->nullable();	
+            // $table->string(Str::snake('Kode Dealer'),50)->nullable();	
             $table->string(Str::snake('Nomor Nota Servis'),255)->nullable();
             $table->dateTime(Str::snake('Tgl Nota Servis'),0)->nullable();
             $table->string('no_PKB',255)->nullable();
@@ -55,7 +55,7 @@ class CreateDatabaseH2Table extends Migration
             $table->double(Str::snake('Uang Bayar'),20,2)->nullable();
             $table->timestamps();
 
-            // $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

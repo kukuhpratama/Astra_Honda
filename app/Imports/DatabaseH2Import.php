@@ -22,6 +22,7 @@ class DatabaseH2Import implements ToModel,WithStartRow
     {   
         $columns = (new DatabaseH2)->getTableColumns();
         unset($columns[0]); //exclude id_database_h1
+        unset($columns[1]); //exclude id_dealer
         unset($columns[38]); //exclude created_at
         unset($columns[39]); //exclude updated_at
         

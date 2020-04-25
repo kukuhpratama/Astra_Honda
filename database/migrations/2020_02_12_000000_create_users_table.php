@@ -19,8 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('jabatan',['dealer','main_dealer','salesman','purifikator']);
+            $table->unsignedBigInteger('id_dealer')->nullable();	
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

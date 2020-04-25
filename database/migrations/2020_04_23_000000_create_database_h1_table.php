@@ -15,7 +15,7 @@ class CreateDatabaseH1Table extends Migration
     {
         Schema::create('database_h1', function (Blueprint $table) {
             $table->bigIncrements('id_database_h1');
-            // $table->unsignedBigInteger('id_dealer')->nullable();	
+            $table->unsignedBigInteger('id_dealer')->nullable();	
             $table->string(Str::snake('No Faktur'), 50)->nullable();	
             $table->string(Str::snake('No Rangka'),50)->nullable();
             $table->string(Str::snake('Kode Mesin'),50)->nullable();	
@@ -30,7 +30,7 @@ class CreateDatabaseH1Table extends Migration
             $table->string(Str::snake('Kode Pos'),50)->nullable();	
             $table->string(Str::snake('Kode Prov'),50)->nullable();	
             $table->string(Str::snake('Cash Credit'),50)->nullable();	
-            $table->string(Str::snake('Kode Dealer'),50)->nullable();	
+            // $table->string(Str::snake('Kode Dealer'),50)->nullable();	
             $table->string('ktp_no',50)->nullable();	
             $table->string(Str::snake('Finance Company'),50)->nullable();	
             $table->string(Str::snake('Down Payment'),50)->nullable();	
@@ -120,7 +120,7 @@ class CreateDatabaseH1Table extends Migration
             $table->string(Str::snake('Kode Pekerjaan 2'),50)->nullable();
             $table->timestamps();	
             
-            // $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
