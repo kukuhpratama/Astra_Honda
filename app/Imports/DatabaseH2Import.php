@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\DatabaseH2;
+use App\Dealer;
 
 class DatabaseH2Import implements ToModel,WithStartRow
 {
@@ -37,7 +38,7 @@ class DatabaseH2Import implements ToModel,WithStartRow
 
         // add id_dealer
         $data['id_dealer'] = Dealer::where('kode_dealer', $data['kode_dealer'])->first['id_dealer'] ?? null;
-        dd($data);exit;
+        
         return new DatabaseH2($data);
 
     }

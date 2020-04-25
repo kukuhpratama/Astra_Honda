@@ -33,11 +33,8 @@ class DatabaseController extends Controller
                 }
             }
         }
+        $new_data['dealers'] = Dealer::all()->toArray();
         $new_data['columns'] = $showed_data['alias_col_name'];
-<<<<<<< HEAD
-=======
-        $new_data['dealers'] = Dealer::all()->toArray(); 
->>>>>>> d76f1d55046be7b1f1d72790052995702e53e2a8
         return view('uploadH1', $new_data);
     }
 
@@ -57,7 +54,7 @@ class DatabaseController extends Controller
             foreach($data as $item){
                 $new_data['result'][] = array_values($item);
             }
-            $new_data['dealers'] = Dealer::all()->toArray(); 
+            $new_data['dealers'] = Dealer::all()->toArray();
         }
 
         return view('uploadH2', $new_data);
