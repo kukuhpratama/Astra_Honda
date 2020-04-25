@@ -59,4 +59,8 @@ class DatabaseH2 extends Model
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
 
+    public function dealer(){
+        return $this->belongsTo('App\Dealer', 'id_dealer');
+    }
+
 }
