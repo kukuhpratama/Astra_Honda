@@ -15,12 +15,13 @@ class CreateDatabaseH1Table extends Migration
     {
         Schema::create('database_h1', function (Blueprint $table) {
             $table->bigIncrements('id_database_h1');
+            // $table->unsignedBigInteger('id_dealer')->nullable();	
             $table->string(Str::snake('No Faktur'), 50)->nullable();	
             $table->string(Str::snake('No Rangka'),50)->nullable();
             $table->string(Str::snake('Kode Mesin'),50)->nullable();	
             $table->string(Str::snake('No Mesi'),50)->nullable();	
             $table->string(Str::snake('Tgl Cetak'),50)->nullable();	
-            $table->string(Str::snake('Tgl Mohon'),50)->nullable();	
+            $table->dateTime(Str::snake('Tgl Mohon'),0)->nullable();	
             $table->string(Str::snake('Nama'),50)->nullable();	
             $table->string(Str::snake('Alamat'),255)->nullable();	
             $table->string(Str::snake('Kel'),50)->nullable();	
@@ -117,7 +118,9 @@ class CreateDatabaseH1Table extends Migration
             $table->string(Str::snake('Propinsi Instansi'),50)->nullable();	
             $table->string(Str::snake('Aktifitas Penjualan'),50)->nullable();
             $table->string(Str::snake('Kode Pekerjaan 2'),50)->nullable();
-            $table->timestamps();		
+            $table->timestamps();	
+            
+            // $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
