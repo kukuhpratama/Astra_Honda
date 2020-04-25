@@ -9,6 +9,7 @@ class DatabaseH2 extends Model
     protected $primaryKey = 'id_database_h2';
     protected $table = 'database_h2';
     protected $fillable = [
+        'id_dealer',
         'nomor',
         'nomor_nama_AHASS',
         'kode_dealer',

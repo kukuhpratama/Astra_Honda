@@ -9,7 +9,8 @@ class DatabaseH1 extends Model
     protected $primaryKey = 'id_database_h1';
     protected $table = 'database_h1';
     protected $fillable = [
-        'no_faktur', 
+        'id_dealer',
+        'no_faktur',
         'no_rangka',
         'kode_mesin',
         'no_mesi',
@@ -112,7 +113,7 @@ class DatabaseH1 extends Model
         'aktifitas_penjualan',
         'kode_pekerjaan2'
     ];
-    
+
     protected $hidden = ['id_database_h1', 'updated_at', 'created_at'];
 
     public function getTableColumns() {
