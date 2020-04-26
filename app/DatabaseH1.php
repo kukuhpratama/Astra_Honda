@@ -24,7 +24,6 @@ class DatabaseH1 extends Model
         'kota_pos',
         'kode_prov',
         'cash_credit',
-        'kode_dealer',
         'ktp_no',
         'finance_company',
         'down_payment',
@@ -121,6 +120,6 @@ class DatabaseH1 extends Model
     }
 
     public function dealer(){
-        return $this->belongsTo('App\Dealer', 'id_dealer');
+        return $this->belongsTo('App\Dealer', 'id_dealer', 'id_dealer');
     }
 }

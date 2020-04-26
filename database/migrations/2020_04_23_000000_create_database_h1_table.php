@@ -20,8 +20,8 @@ class CreateDatabaseH1Table extends Migration
             $table->string(Str::snake('No Rangka'),50)->nullable();
             $table->string(Str::snake('Kode Mesin'),50)->nullable();	
             $table->string(Str::snake('No Mesi'),50)->nullable();	
-            $table->string(Str::snake('Tgl Cetak'),50)->nullable();	
-            $table->dateTime(Str::snake('Tgl Mohon'),0)->nullable();	
+            $table->date(Str::snake('Tgl Cetak'))->nullable();	
+            $table->date(Str::snake('Tgl Mohon'))->nullable();	
             $table->string(Str::snake('Nama'),50)->nullable();	
             $table->string(Str::snake('Alamat'),255)->nullable();	
             $table->string(Str::snake('Kel'),50)->nullable();	
@@ -41,7 +41,7 @@ class CreateDatabaseH1Table extends Migration
             $table->string('no_ktp',50)->nullable();		
             $table->string(Str::snake('Jenis Sales	'),50)->nullable();	
             $table->string(Str::snake('Gender'),50)->nullable();	
-            $table->string(Str::snake('Tgl Lahir'),50)->nullable();	
+            $table->date(Str::snake('Tgl Lahir'))->nullable();	
             $table->string(Str::snake('alamat3'),255)->nullable();		
             $table->string(Str::snake('Kel4'),50)->nullable();	
             $table->string(Str::snake('Kec 5'),50)->nullable();	

@@ -10,17 +10,17 @@
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
-		<!-- MAIN CSS -->
+	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
-		<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
-		<!-- GOOGLE FONTS -->
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-		<!-- ICONS -->
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	{{-- <link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}"> --}}
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.ico')}}">
+	@yield('custom-style');
 </head>
-
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -64,9 +64,7 @@
 							<a href="#database" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Database</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="database" class="collapse ">
 								<ul class="nav">
-									@if (session()->has('jabatan') && session('jabatan') == 'main_dealer')
-										<li><a href="{{ url('database/H1') }}" class="">Database H1</a></li>
-									@endif
+									<li><a href="{{ url('database/H1') }}" class="">Database H1</a></li>
 									<li><a href="{{ url('database/H2') }}" class="">Database H2</a></li>
 								</ul>
 							</div>
@@ -103,7 +101,7 @@
     <script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
-
+	@yield('custom-script');
 </body>
 
 </html>

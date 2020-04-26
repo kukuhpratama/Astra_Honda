@@ -63,6 +63,7 @@ class LoginController extends Controller
                 'name'      => auth()->user()->name,
                 'jabatan'   => auth()->user()->jabatan,
                 'id_user'   => auth()->user()->id_user,
+                'id_dealer'   => auth()->user()->id_dealer,
             ]);
             
             return redirect()->route('home');
