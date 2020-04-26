@@ -19,6 +19,6 @@ class User extends Authenticatable
     ];
 
     public function dealer(){
-        return $this->belongsTo('App\Dealer', 'id_dealer');
+        return $this->belongsTo('App\Dealer', 'id_dealer' , 'id_dealer');
     }
 }

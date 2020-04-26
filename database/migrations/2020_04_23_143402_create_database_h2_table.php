@@ -39,20 +39,20 @@ class CreateDatabaseH2Table extends Migration
             $table->string(Str::snake('Kabupaten'),255)->nullable();
             $table->string(Str::snake('No Telp'),255)->nullable();
             $table->string('no_HP',255)->nullable();
-            $table->double(Str::snake('Km Sekarang'),20,2)->nullable();
-            $table->double(Str::snake('Km Berikut'),20,2)->nullable();
+            $table->integer(Str::snake('Km Sekarang'))->nullable();
+            $table->integer(Str::snake('Km Berikut'))->nullable();
             $table->string(Str::snake('Jenis'),255)->nullable();
             $table->string(Str::snake('Kode Jasa Part'),255)->nullable();
             $table->string(Str::snake('Grup Jasa Part'),255)->nullable();
             $table->string(Str::snake('Nama Jasa Part'),255)->nullable();
             $table->string(Str::snake('Satuan'),255)->nullable();
-            $table->double(Str::snake('Jumlah'),20,2)->nullable();
-            $table->double(Str::snake('Harga'),20,2)->nullable();
-            $table->double(Str::snake('Total'),20,2)->nullable();
+            $table->integer(Str::snake('Jumlah'))->nullable();
+            $table->integer(Str::snake('Harga'))->nullable();
+            $table->integer(Str::snake('Total'))->nullable();
             $table->string(Str::snake('Tipe Pembayaran'),255)->nullable();
             $table->string(Str::snake('Nama Mekanik'),255)->nullable();
             $table->string(Str::snake('User Login'),255)->nullable();
-            $table->double(Str::snake('Uang Bayar'),20,2)->nullable();
+            $table->integer(Str::snake('Uang Bayar'))->nullable();
             $table->timestamps();
 
             $table->foreign('id_dealer')->references('id_dealer')->on('dealers')->onDelete('cascade')->onUpdate('cascade');

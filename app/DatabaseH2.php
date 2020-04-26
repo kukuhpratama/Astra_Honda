@@ -12,7 +12,6 @@ class DatabaseH2 extends Model
         'id_dealer',
         'nomor',
         'nomor_nama_AHASS',
-        'kode_dealer',
         'nomor_nota_servis',
         'tgl_nota_servis',
         'no_PKB',
@@ -43,25 +42,26 @@ class DatabaseH2 extends Model
         'jumlah',
         'harga',
         'total',
-        'tipe',
-        'pembayaran',
+        'tipe_pembayaran',
         'nama_mekanik',
-        'user',
-        'login',
+        'user_login',
         'uang_bayar'
     ];
+
     protected $hidden = ['id_database_h2', 'updated_at', 'created_at'];
 
     // protected $casts = [
     //     'tgl_nota_servis' => 'datetime'
     // ];
 
-    public function getTableColumns() {
+    public function getTableColumns()
+    {
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
 
-    public function dealer(){
-        return $this->belongsTo('App\Dealer', 'id_dealer');
+    public function dealer()
+    {
+        return $this->belongsTo('App\Dealer', 'id_dealer', 'id_dealer');
     }
 
 }
