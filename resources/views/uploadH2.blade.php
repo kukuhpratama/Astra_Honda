@@ -37,7 +37,7 @@
                             @endif
                             <div class="col-12">
                                 <div class="col-6">
-                                    <form class="form-horizontal" action="{{ secure_url('database/H2/filter') }}" method="post">
+                                    <form class="form-horizontal" action="{{ secure_url('database/H2') }}" method="post">
                                         @csrf
                                         <div class="form-group">
                                             <label for="dealer" class="col-md-2 ">Nama Deler</label>

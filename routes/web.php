@@ -36,12 +36,12 @@ Route::get('home', 'HomeController@index')->name('home')->middleware('validate_s
 Route::group(['prefix' => 'database', 'middleware' => 'validate_session'], function(){
 
     Route::get('H1','DatabaseController@uploadH1');
-    Route::post('H1/filter', 'DatabaseController@filterH1');
+    Route::post('H1', 'DatabaseController@filterH1');
     Route::post('H1/export_excel', 'DatabaseController@export_excel_h1');
     Route::post('H1/import_excel', 'DatabaseController@import_excel_h1')->middleware('is_main_dealer');
     
     Route::get('H2','DatabaseController@uploadH2');
-    Route::post('H2/filter', 'DatabaseController@filterH2');
+    Route::post('H2', 'DatabaseController@filterH2');
     Route::post('H2/export_excel', 'DatabaseController@export_excel_h2');
     Route::post('H2/import_excel', 'DatabaseController@import_excel_h2');
 });
