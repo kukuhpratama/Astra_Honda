@@ -27,7 +27,11 @@ class DatabaseController extends Controller
         $filter_data['start_date'] = date($post['start_date']);
         $filter_data['end_date'] = date($post['end_date']);
 
-        $filter_data['data'] = DatabaseH1::where('id_dealer', $filter_data['id_dealer'])->whereBetween('tgl_mohon', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+        if($filter_data['id_dealer'] != 'all'){
+            $filter_data['data'] = DatabaseH1::where('id_dealer', $filter_data['id_dealer'])->whereBetween('tgl_mohon', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+        }else{
+            $filter_data['data'] = DatabaseH1::whereBetween('tgl_mohon', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+        }
         return $this->uploadH1($filter_data);
     }
 
@@ -38,8 +42,12 @@ class DatabaseController extends Controller
         $filter_data['start_date'] = date($post['start_date']);
         $filter_data['end_date'] = date($post['end_date']);
 
-        $filter_data['data'] = DatabaseH2::where('id_dealer', $filter_data['id_dealer'])->whereBetween('tgl_nota_servis', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
-        // dd($data_filter);exit;
+        if($filter_data['id_dealer'] != 'all'){
+            $filter_data['data'] = DatabaseH2::where('id_dealer', $filter_data['id_dealer'])->whereBetween('tgl_nota_servis', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+        }else{
+            $filter_data['data'] = DatabaseH2::whereBetween('tgl_nota_servis', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+        }
+
         return $this->uploadH2($filter_data);
     }
 
@@ -83,6 +91,7 @@ class DatabaseController extends Controller
             }
         }
         $new_data['columns'] = $showed_data['alias_col_name'];
+        // dd($new_data);exit;
         return view('uploadH1', $new_data);
     }
 
@@ -179,12 +188,16 @@ class DatabaseController extends Controller
         return redirect()->back()->with('success', 'File Successfully Uploaded');  
     }
     
-    public function export_excel_h1(){
-        return Excel::download(new DatabaseH1Export, 'database_h1.xlsx');
+    public function export_excel_h1(Request $request){
+        $post = $request->except('_token');
+        $exporter = app()->makeWith(DatabaseH1Export::class, compact('post'));   
+        return $exporter->download('database_h1.xlsx');
     }
 
-    public function export_excel_h2(){
-        return Excel::download(new  DatabaseH2Export, 'database_h2.xlsx');
+    public function export_excel_h2(Request $request){
+        $post = $request->except('_token');
+        $exporter = app()->makeWith(DatabaseH2Export::class, compact('post'));   
+        return $exporter->download('database_h1.xlsx');
     }
 
     public function getColumnsH2(){
@@ -197,9 +210,9 @@ class DatabaseController extends Controller
         $count = 0;
         foreach($columns as $cols){
             if($count == 2)
-                $columns_reset[$count] = 'kode_dealer';
+                $columns_reset[$count] = 'Kode Dealer';
             
-            $columns_reset[] = $cols;
+            $columns_reset[] = str_replace('_',' ',ucfirst($cols));
             $count++;
         }
         // dd($columns_reset);exit;

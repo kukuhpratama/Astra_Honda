@@ -19,6 +19,8 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.ico')}}">
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	@yield('custom-style');
 </head>
 <body>
@@ -100,7 +102,8 @@
     <script src="{{asset('admin/assets/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
+	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	@yield('custom-script');
 </body>
 

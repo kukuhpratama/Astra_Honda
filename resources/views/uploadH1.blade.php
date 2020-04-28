@@ -10,6 +10,10 @@
         color: white !important;
     }
 
+    .search{
+        border-radius: 5px;
+    }
+
 </style>
 @endsection
 
@@ -44,7 +48,7 @@
                                                 <div class="col-md-10">
                                                     @if (isset($jabatan) && $jabatan == 'main_dealer')
                                                         <select name="dealer" id="dealer" class="form-control" required>
-                                                            <option value="">Pilih Dealer</option>
+                                                            <option value="all">Pilih Dealer</option>
                                                             @foreach ($dealers as $dealer)
                                                                 <option value="{{ $dealer['id_dealer'] }}" @if(isset($filter_data['id_dealer']) && $dealer['id_dealer'] == $filter_data['id_dealer']) selected @endif>{{ $dealer['nama_dealer']}}</option>
                                                             @endforeach
@@ -59,10 +63,10 @@
                                             <div class="form-group">
                                                 <label for="periodesales" class="col-md-2 ">Periode Sales</label>
                                                 <div class="col-md-5">
-                                                    <input type="date" class="form-control" name="start_date" placeholder="Start Date" value="{{ isset($filter_data['start_date']) ? $filter_data['start_date'] : date('Y-m-d') }}">
+                                                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Start Date" value="{{ isset($filter_data['start_date']) ? $filter_data['start_date'] : date('Y-m-d',strtotime('-1 year', strtotime(date('Y-m-d')))) }}">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="date" class="form-control" name="end_date" placeholder="End Date" value="{{ isset($filter_data['end_date']) ? $filter_data['end_date'] : date('Y-m-d') }}">
+                                                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="End Date" value="{{ isset($filter_data['end_date']) ? $filter_data['end_date'] : date('Y-m-d') }}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -76,10 +80,10 @@
                                     <div class="pull-right">
                                         @if (session()->has('jabatan') && session('jabatan') == 'main_dealer')
                                             <!-- Import Excel -->
-                                            <a type="button" class="btn btn-success" data-toggle="modal" data-target="#importExcel"><i class="fa fa-upload"></i> UPLOAD FILE EXCEL</a>
+                                            <a type="button" class="btn btn-success" data-toggle="modal" data-target="#importExcel" style="margin-left:10px;"><i class="fa fa-upload"></i> UPLOAD FILE EXCEL</a>
                                             <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
-                                                    <form method="post" action="{{ secure_url('/database/H1/import_excel') }}" enctype="multipart/form-data">
+                                                    <form action="{{ secure_url('/database/H1/import_excel') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -102,15 +106,22 @@
                                             </div>	
                                         @endif
                                         <!-- Export Excel -->
-                                        <a href="{{ secure_url('database/H1/export_excel') }}"  class="btn btn-primary"><i class="fa fa-download"></i> EXPORT</a>
+                                        <form action="{{ secure_url('database/H1/export_excel') }}" method="post" style="float:left">
+                                            @csrf
+                                            <input type="hidden" id="dealer_hidden" name="dealer_hidden" value="">
+                                            <input type="hidden" id="start_date_hidden" name="start_date_hidden" value="">
+                                            <input type="hidden" id="end_date_hidden" name="end_date_hidden" value="">
+                                            <button type="submit" class="btn-custom" id="export-btn"><i class="fa fa-download"></i> EXPORT</button>
+                                        </form>
                                     </div>
                                     </div>
                                 </div>
                             </div>
-                            <br>
+                            <br><br>
                             <div class="panel-body">
+                                {{-- <input type="text" id="myInputTextField"> --}}
                                 <div class="table-responsive">
-                                    <table class="table table-bordered">
+                                    <table class="cell-border" id="dataTable">
                                         <thead>
                                             <tr class="bg-primary">
                                                 <th>No.</th>
@@ -138,4 +149,42 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            myTable = $('#dataTable').DataTable({
+                // "dom": '<"wrapper"lipt>'
+            });
+            
+            var id_dealer = $('#dealer').val();
+            var start_date = $('#start_date').val();
+            var end_date = $('#end_date').val(); 
+
+            $('#dealer_hidden').val(id_dealer);
+            $('#start_date_hidden').val(start_date); 
+            $('#end_date_hidden').val(end_date);
+
+            $("#dealer").change(function(){
+                id_dealer = $(this).val();
+                $('#dealer_hidden').val(id_dealer);
+                console.log($('#dealer_hidden').val());
+            });
+
+            $("#start_date").change(function(){
+                start_date = $(this).val();
+                $('#start_date_hidden').val(start_date);
+                console.log($('#start_date_hidden').val());
+            });
+
+            
+            $("#end_date").change(function(){
+                end_date = $(this).val();
+                $('#end_date_hidden').val(end_date);
+                console.log($('#end_date_hidden').val());
+            });
+          
+        });
+    </script>
 @endsection
