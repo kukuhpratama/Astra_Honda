@@ -31,8 +31,8 @@ class DatabaseH2Export implements FromView
             ->join('dealers AS dl', 'db2.id_dealer', 'dl.id_dealer')
             ->select(
                 'nomor',
-                'nomor_nama_AHASS',
                 'dl.kode_dealer',
+                'nomor_nama_AHASS',
                 'nomor_nota_servis',
                 'tgl_nota_servis',
                 'no_PKB',

@@ -84,12 +84,14 @@ class DatabaseController extends Controller
         }
         
         foreach($data as $key1 => $item){
+           $new_data['result'][$key1]['kode_dealer'] = Dealer::where('id_dealer',$item['id_dealer'])->first()['kode_dealer'] ?? '';
            foreach($item as $key2 => $value){
                 if(in_array($key2, $showed_data['table_col_name'])){
                     $new_data['result'][$key1][$key2] = $value;
                 }
             }
         }
+
         $new_data['columns'] = $showed_data['alias_col_name'];
         // dd($new_data);exit;
         return view('uploadH1', $new_data);
@@ -132,7 +134,7 @@ class DatabaseController extends Controller
             unset($new_data['result'][$count][0]); // unset id primary key
             
             // move kode_dealer in index 2 (new kode dealer)
-            array_splice($new_data['result'][$count], 2, 0, $item['kode_dealer']); // splice in at position 3
+            array_splice($new_data['result'][$count], 1, 0, $item['kode_dealer']); // splice in at position 3
             
             // unser last item (old kode dealer)
             unset($new_data['result'][$count][sizeof($new_data['result'][$count]) - 1]);
@@ -209,7 +211,7 @@ class DatabaseController extends Controller
 
         $count = 0;
         foreach($columns as $cols){
-            if($count == 2)
+            if($count == 1)
                 $columns_reset[$count] = 'Kode Dealer';
             
             $columns_reset[] = str_replace('_',' ',ucfirst($cols));
@@ -223,6 +225,7 @@ class DatabaseController extends Controller
 
         return [
             'alias_col_name' => [
+                'Kode Dealer',
                 'No. Rangka',	
                 'Kode Mesin',	
                 'No. Mesi',	
@@ -264,6 +267,7 @@ class DatabaseController extends Controller
             ],
             
             'table_col_name' => [
+                'kode_dealer',
                 'no_rangka',
                 'kode_mesin',
                 'no_mesi',

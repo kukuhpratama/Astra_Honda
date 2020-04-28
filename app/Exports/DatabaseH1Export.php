@@ -5,6 +5,7 @@ use App\DatabaseH1;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromView;
+use DB;
 
 class DatabaseH1Export implements FromView
 {
@@ -26,7 +27,10 @@ class DatabaseH1Export implements FromView
 
     public function view(): View
     {
-        $query = DatabaseH1::select(
+        $query = DB::table('database_h1 AS db1')
+            ->join('dealers AS dl', 'db1.id_dealer', 'dl.id_dealer')
+            ->select(
+            'dl.kode_dealer',
             'no_rangka',
             'kode_mesin',
             'no_mesi',
@@ -55,8 +59,8 @@ class DatabaseH1Export implements FromView
             'umur',
             'range_umur',
             'tipe',
-            '6_jenis',
-            '3_jenis',
+            '6_jenis AS enam_jenis',
+            '3_jenis AS tiga_jenis',
             'DP_aktual',
             'tenor2',
             'cicilan',
@@ -68,9 +72,9 @@ class DatabaseH1Export implements FromView
         );
 
         if($this->id_dealer != 'all'){
-            $query = $query->where('id_dealer', $this->id_dealer);
+            $query = $query->where('dl.id_dealer', $this->id_dealer);
         }
-        $query = $query->whereBetween('tgl_mohon', [$this->start_date, $this->end_date])->get()->toArray();
+        $query = $query->whereBetween('db1.tgl_mohon', [$this->start_date, $this->end_date])->get()->toArray();
 
         return view('component.export_db_h1', [
             'database_h1' => $query

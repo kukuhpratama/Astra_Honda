@@ -8,7 +8,7 @@ class DatabaseH1 extends Model
 {
     protected $primaryKey = 'id_database_h1';
     protected $table = 'database_h1';
-    protected $fillable = [
+    protected $fillable = [      
         'id_dealer',
         'no_faktur',
         'no_rangka',

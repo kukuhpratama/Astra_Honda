@@ -166,6 +166,8 @@
             $('#start_date_hidden').val(start_date); 
             $('#end_date_hidden').val(end_date);
 
+            console.log($('#dealer_hidden').val());
+
             $("#dealer").change(function(){
                 id_dealer = $(this).val();
                 $('#dealer_hidden').val(id_dealer);
@@ -184,7 +186,6 @@
                 $('#end_date_hidden').val(end_date);
                 console.log($('#end_date_hidden').val());
             });
-          
         });
     </script>
 @endsection

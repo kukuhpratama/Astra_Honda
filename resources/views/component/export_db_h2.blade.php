@@ -2,8 +2,8 @@
     <thead>
     <tr>	
         <th style="width:10px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Nomor</th>
-        <th style="width:45px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Nomor Nama AHASS</th>
         <th style="width:17px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Kode Dealer</th>
+        <th style="width:45px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Nomor Nama AHASS</th>
         <th style="width:28px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Nomor Nota Servis</th>
         <th style="width:25px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Tgl Nota Servis</th>
         <th style="width:25px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">No. PKB</th>
@@ -44,8 +44,8 @@
     @foreach($database_h2 as $dbh2)
         <tr>
             <td style="text-align:center">{{ $dbh2->nomor }}</td>
-            <td style="text-align:left">{{ $dbh2->nomor_nama_AHASS }}</td>
             <td style="text-align:left">{{ $dbh2->kode_dealer }}</td>
+            <td style="text-align:left">{{ $dbh2->nomor_nama_AHASS }}</td>
             <td style="text-align:left">{{ $dbh2->nomor_nota_servis }}</td>
             <td style="text-align:left">{{ $dbh2->tgl_nota_servis }}</td>
             <td style="text-align:left">{{ $dbh2->no_PKB }}</td>

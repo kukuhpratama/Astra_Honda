@@ -1,6 +1,7 @@
 <table style="border-style:solid">
     <thead>
     <tr>
+        <th style="width:20px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Kode Dealer</th>
         <th style="width:20px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">No. Rangka</th>	
         <th style="width:20px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">Kode Mesin</th>	
         <th style="width:20px; text-align:center; background-color:#337ab7; color:#ffffff; font-weight:bold">No. Mesi</th>	
@@ -44,44 +45,45 @@
     <tbody>
     @foreach($database_h1 as $dbh1)
         <tr>
-            <td style="text-align:left">{{ $dbh1['no_rangka'] }}</td>
-            <td style="text-align:center">{{ $dbh1['kode_mesin'] }}</td>
-            <td style="text-align:center">{{ $dbh1['no_mesi'] }}</td>
-            <td style="text-align:center">{{ $dbh1['tgl_mohon'] }}</td>
-            <td style="text-align:left">{{ $dbh1['nama'] }}</td>
-            <td style="text-align:left">{{ $dbh1['alamat'] }}</td>
-            <td style="text-align:left">{{ $dbh1['kel'] }}</td>
-            <td style="text-align:left">{{ $dbh1['kec'] }}</td>
-            <td style="text-align:center">{{ $dbh1['kode_kota'] }}</td>
-            <td style="text-align:center">{{ $dbh1['cash_credit'] }}</td>
-            <td style="text-align:center">{{ $dbh1['finance_company'] }}</td>
-            <td style="text-align:center">{{ $dbh1['down_payment'] }}</td>
-            <td style="text-align:center">{{ $dbh1['tenor'] }}</td>
-            <td style="text-align:center">{{ $dbh1['email'] }}</td>
-            <td style="text-align:center">{{ $dbh1['jenis_sales'] }}</td>
-            <td style="text-align:center">{{ $dbh1['gender'] }}</td>
-            <td style="text-align:center">{{ $dbh1['tgl_lahir'] }}</td>
-            <td style="text-align:center">{{ $dbh1['agama'] }}</td>
-            <td style="text-align:center">{{ $dbh1['pekerjaan'] }}</td>
-            <td style="text-align:center">{{ $dbh1['pengeluaran'] }}</td>
-            <td style="text-align:center">{{ $dbh1['pendidikan'] }}</td>
-            <td style="text-align:left">{{ $dbh1['no_hp'] }}</td>
-            <td style="text-align:left">{{ $dbh1['no_telp'] }}</td>
-            <td style="text-align:center">{{ $dbh1['dihubungi'] }}</td>
-            <td style="text-align:left">{{ $dbh1['sales_person'] }}</td>
-            <td style="text-align:left">{{ $dbh1['umur'] }}</td>
-            <td style="text-align:left">{{ $dbh1['range_umur'] }}</td>
-            <td style="text-align:left">{{ $dbh1['tipe'] }}</td>
-            <td style="text-align:left">{{ $dbh1['6_jenis'] }}</td>
-            <td style="text-align:left">{{ $dbh1['3_jenis'] }}</td>
-            <td style="text-align:left">{{ $dbh1['DP_aktual'] }}</td>
-            <td style="text-align:left">{{ $dbh1['tenor2'] }}</td>
-            <td style="text-align:left">{{ $dbh1['cicilan'] }}</td>
-            <td style="text-align:left">{{ $dbh1['tipe_ATPM'] }}</td>
-            <td style="text-align:left">{{ $dbh1['warna'] }}</td>
-            <td style="text-align:left">{{ $dbh1['tipe_var_plus'] }}</td>
-            <td style="text-align:left">{{ $dbh1['no_KK'] }}</td>
-            <td style="text-align:left">{{ $dbh1['kode_pekerjaan2'] }}</td>
+             <td style="text-align:left">{{ $dbh1->kode_dealer }}</td>
+            <td style="text-align:left">{{ $dbh1->no_rangka }}</td>
+            <td style="text-align:center">{{ $dbh1->kode_mesin }}</td>
+            <td style="text-align:center">{{ $dbh1->no_mesi }}</td>
+            <td style="text-align:center">{{ $dbh1->tgl_mohon }}</td>
+            <td style="text-align:left">{{ $dbh1->nama }}</td>
+            <td style="text-align:left">{{ $dbh1->alamat }}</td>
+            <td style="text-align:left">{{ $dbh1->kel }}</td>
+            <td style="text-align:left">{{ $dbh1->kec }}</td>
+            <td style="text-align:center">{{ $dbh1->kode_kota }}</td>
+            <td style="text-align:center">{{ $dbh1->cash_credit }}</td>
+            <td style="text-align:center">{{ $dbh1->finance_company }}</td>
+            <td style="text-align:center">{{ $dbh1->down_payment }}</td>
+            <td style="text-align:center">{{ $dbh1->tenor }}</td>
+            <td style="text-align:center">{{ $dbh1->email }}</td>
+            <td style="text-align:center">{{ $dbh1->jenis_sales }}</td>
+            <td style="text-align:center">{{ $dbh1->gender }}</td>
+            <td style="text-align:center">{{ $dbh1->tgl_lahir }}</td>
+            <td style="text-align:center">{{ $dbh1->agama }}</td>
+            <td style="text-align:center">{{ $dbh1->pekerjaan }}</td>
+            <td style="text-align:center">{{ $dbh1->pengeluaran }}</td>
+            <td style="text-align:center">{{ $dbh1->pendidikan }}</td>
+            <td style="text-align:left">{{ $dbh1->no_hp }}</td>
+            <td style="text-align:left">{{ $dbh1->no_telp }}</td>
+            <td style="text-align:center">{{ $dbh1->dihubungi }}</td>
+            <td style="text-align:left">{{ $dbh1->sales_person }}</td>
+            <td style="text-align:left">{{ $dbh1->umur }}</td>
+            <td style="text-align:left">{{ $dbh1->range_umur }}</td>
+            <td style="text-align:left">{{ $dbh1->tipe }}</td>
+            <td style="text-align:left">{{ $dbh1->enam_jenis }}</td>
+            <td style="text-align:left">{{ $dbh1->tiga_jenis }}</td>
+            <td style="text-align:left">{{ $dbh1->DP_aktual }}</td>
+            <td style="text-align:left">{{ $dbh1->tenor2 }}</td>
+            <td style="text-align:left">{{ $dbh1->cicilan }}</td>
+            <td style="text-align:left">{{ $dbh1->tipe_ATPM }}</td>
+            <td style="text-align:left">{{ $dbh1->warna }}</td>
+            <td style="text-align:left">{{ $dbh1->tipe_var_plus }}</td>
+            <td style="text-align:left">{{ $dbh1->no_KK }}</td>
+            <td style="text-align:left">{{ $dbh1->kode_pekerjaan2 }}</td>
         </tr>
     @endforeach
     </tbody>
