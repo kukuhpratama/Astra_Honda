@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-// Route::get('/', function () {
-//     return view('login');
-// });
-
-
-// Auth::routes();
-
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', function(){
@@ -31,7 +23,10 @@ Route::get('logout', function(){
 Route::get('/', function(){
     return redirect()->route('home');
 });
-Route::get('home', 'HomeController@index')->name('home')->middleware('validate_session');
+
+Route::group(['prefix'=>'home', 'middleware' => 'auth'], function(){
+    Route::get('/', 'HomeController@index')->name('home');
+});
 
 Route::group(['prefix' => 'database', 'middleware' => 'validate_session'], function(){
 
