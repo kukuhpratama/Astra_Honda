@@ -24,7 +24,7 @@ Route::get('/', function(){
     return redirect()->route('home');
 });
 
-Route::group(['prefix'=>'home', 'middleware' => 'auth'], function(){
+Route::group(['prefix'=>'home', 'middleware' => 'validate_session'], function(){
     Route::get('/', 'HomeController@index')->name('home');
 });
 
@@ -39,4 +39,14 @@ Route::group(['prefix' => 'database', 'middleware' => 'validate_session'], funct
     Route::post('H2', 'DatabaseController@filterH2');
     Route::post('H2/export_excel', 'DatabaseController@export_excel_h2');
     Route::post('H2/import_excel', 'DatabaseController@import_excel_h2');
+});
+
+Route::group(['prefix' => 'user', 'middleware' => 'validate_session'], function(){
+
+    Route::get('/','UserController@index');
+    Route::get('create', 'UserController@create')->middleware('is_main_dealer');
+    Route::post('store', 'UserController@store')->middleware('is_main_dealer');
+    Route::get('edit/{id}', 'UserController@edit')->middleware('is_main_dealer');
+    Route::post('update/{id}','UserController@update')->middleware('is_main_dealer');
+    Route::get('delete/{id}', 'UserController@destroy')->middleware('is_main_dealer');
 });

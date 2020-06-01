@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
@@ -71,6 +71,7 @@
 								</ul>
 							</div>
 						</li>
+						<li><a href="{{url('user')}}" ><i class="lnr lnr-user"></i> <span>User</span></a></li>
 						<li><a href="#" ><i class="lnr lnr-checkmark-circle"></i> <span>Verifikasi CDB</span></a></li>
 						<li><a href="#" ><i class="lnr lnr-users"></i> <span>Follow UP CDB</span></a></li>
 						<li><a href="#" ><i class="lnr lnr-book"></i> <span>Leads Data</span></a></li>
@@ -80,7 +81,6 @@
 						<li><a href="#" ><i class="lnr lnr-cog"></i> <span>FU. After Service</span></a></li>
 						<li><a href="#" ><i class="lnr lnr-file-empty"></i> <span>Kuadran</span></a></li>
 						<li><a href="#" ><i class="lnr lnr-file-empty"></i> <span>Pica</span></a></li>
-						<li><a href="#" ><i class="lnr lnr-user"></i> <span>User</span></a></li>
 						<li><a href="#" ><i class="lnr lnr-chart-bars"></i> <span>Report</span></a></li>
 					</ul>
 				</nav>
